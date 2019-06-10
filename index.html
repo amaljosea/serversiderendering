@@ -1,0 +1,36 @@
+
+<html>
+    <head>
+        <script>
+            window.onload=()=>{
+                console.log("loaded")
+                const content= document.getElementById("content")
+            }
+
+            const numberChanged=(e)=>{
+                console.log(e.target.value)
+                if(e.target.value){
+                    getContent(e.target.value)
+                }
+            }
+
+            const getContent = async (number) => {
+                console.log("number is", number)
+                fetch('http://localhost:4000/html/'+number)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(myJson) {
+                    console.log(JSON.stringify(myJson));
+                    content.innerHTML=myJson.list
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <input type="number" id="number-input" onkeyup="numberChanged(event)"/>
+        <div id="content">
+
+        </div>
+    </body>
+</html>
