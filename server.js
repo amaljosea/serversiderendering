@@ -22,7 +22,7 @@ const render = (req, res) => {
     for(i=0;i<=req.params.number;i++){
         content=content+'<h1>number is '+i+'</h1>'
     }
-    res.send({"list":content});
+    res.send(content);
 };
 
 const data = (req, res) => {
